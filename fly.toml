@@ -1,0 +1,29 @@
+# Fly.io deployment for the Cute Poker game server (SPEC §2 — WebSocket needs a
+# long-lived process, so host the server here rather than on serverless).
+# Deploy: `fly launch --no-deploy` once to create the app + volume, then
+# `fly deploy`. A single machine handles HTTP, WebSocket and the SQLite db.
+
+app = "cute-poker"
+primary_region = "nrt"  # Tokyo — close to the initial JP audience (SPEC §1)
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  DB_PATH = "/data/cute-poker.db"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false   # keep practice bots running 24/7 (SPEC §9.4.1)
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[mounts]]
+  source = "cute_poker_data"
+  destination = "/data"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

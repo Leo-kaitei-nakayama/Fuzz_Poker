@@ -2,6 +2,14 @@ node_modules/
 dist/
 coverage/
 *.log
+*.db
+*.db-shm
+*.db-wal
+_smoke.mjs
+
+# generated web client bundle (built by `pnpm build` / Docker)
+apps/web/public/app.js
+apps/web/public/app.js.map
 .DS_Store
 .env
 .env.local

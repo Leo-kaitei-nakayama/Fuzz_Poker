@@ -8,12 +8,16 @@
     "node": ">=22"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild"]
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   },
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
     "typecheck": "pnpm -r typecheck",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "dev": "pnpm --filter @cute-poker/web build && pnpm --filter @cute-poker/game-server dev",
+    "start": "pnpm build && node apps/game-server/dist/server.js"
   }
 }

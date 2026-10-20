@@ -1,0 +1,19 @@
+{
+  "name": "cute-poker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cute Poker — online Texas Hold'em with character collection (Phase 1 foundation)",
+  "packageManager": "pnpm@10.28.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint"
+  }
+}
